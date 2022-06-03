@@ -4,13 +4,28 @@ import java.math.BigInteger;
 
 public class Main {
 
+    public static void main(String[] args) {
+        int i = Integer.MAX_VALUE;
+        float f = i;
+        int j = (int) f;
+        long l = (long) f;
+
+        System.out.println(i + "\n" + f + "\n"+ j + "\n" + l + "\n" + (i + 2));
+    }
+
     void convTypes() {
         byte b = 1;
+        b = 1 + 1;
+        b += b;
+        b += 1;
+        b++;
+        b = (byte) (b + 1);
+        b = (byte) (b + b);
         short s = b;
-//        char c = b;
-//        char c = s;
-        char c = 1;
-        int i = b;
+        char ch = (char) b;
+        char cn = (char) s;
+        char ck = 1;
+        int i = s;
         long l = i;
         float f = l;
         double d = f;
@@ -134,8 +149,8 @@ public class Main {
         }
         return String.valueOf(res);
     }
+    public static void pieceTest() {
 
-    public static void main(String[] args) {
         String[] roles = new String[]{
                 "Городничий",
                 "Аммос Федорович",
@@ -151,8 +166,7 @@ public class Main {
                 "Артемий Филиппович: Вот не было заботы, так подай!",
                 "Лука Лукич: Господи боже! еще и с секретным предписаньем!"
         };
-//        System.out.println(printTextPerRole(roles, texts));
-//        printOddNumbers(new int[0]);
+        System.out.println(printTextPerRole(roles, texts));
     }
 
 }
