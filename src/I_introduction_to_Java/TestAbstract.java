@@ -6,8 +6,11 @@ public abstract class TestAbstract {
     private byte pb;
     public byte bb;
     static byte sb;
-    final byte fb = 0;
+    final byte fb = b;
 
+    TestAbstract (byte b) {
+        this.b = b;
+    }
 
     byte pacByte() {
         return b;
@@ -26,8 +29,10 @@ public abstract class TestAbstract {
     }
 
     final byte finByte() {
-        return fb;
+        return b;
     }
 
     abstract byte absByte();
+
+    abstract byte abtByte();
 }

@@ -5,12 +5,36 @@ import java.math.BigInteger;
 public class Main {
 
     public static void main(String[] args) {
-        int i = Integer.MAX_VALUE;
-        float f = i;
-        int j = (int) f;
-        long l = (long) f;
+//        System.out.println(decimalToBinary(61));
+        System.out.println(binaryToDecimal("111101"));
+    }
+//     Переведи число X (любое) из десятичной в двоичную, и число Y (любое) из двоичной в десятичную
+//    0 = 000
+//    1 = 001
+//    2 = 010
+//    3 = 011
+//    4 = 100
+//    5 = 101
+//    6 = 110
+//    7 = 111
+//    61 = 111101
 
-        System.out.println(i + "\n" + f + "\n"+ j + "\n" + l + "\n" + (i + 2));
+    public static String decimalToBinary(int dec) {
+        StringBuilder res = new StringBuilder();
+        while (dec > 0) {
+            int bit = dec % 2;
+            res.insert(0, bit);
+            dec /= 2;
+            System.out.println(dec);
+        }
+        return res.toString();
+    }
+    public static int binaryToDecimal(String bin) {
+        int res = 0;
+        for (int i = bin.length() - 1, squ = 1; i >= 0; i--, squ *= 2) {
+            res += (bin.charAt(i) - '0') * squ;
+        }
+        return res;
     }
 
     void convTypes() {
@@ -21,16 +45,23 @@ public class Main {
         b++;
         b = (byte) (b + 1);
         b = (byte) (b + b);
+
         short s = b;
-        char ch = (char) b;
-        char cn = (char) s;
-        char ck = 1;
+
+        char c = 1;
+        c = (char) b;
+        c = (char) s;
+
         int i = s;
         long l = i;
         float f = l;
         double d = f;
 
-//        i = (int) 1 > 2;
+        int x = Integer.MAX_VALUE;  // 2147483647
+        float w = i;                // 2.14748365E9
+        int y = (int) f;            // 2147483647
+        long z = (long) f;          // 2147483648
+
     }
 
     // Задача 2.2.2
@@ -55,13 +86,13 @@ public class Main {
         return clean.equals(revers);
     }
 
-    // Задача 2.2.13
+    // Задача 2.4.13
     // Реализуйте метод factorial, вычисляющий факториал заданного натурального числа.
     public static BigInteger factorial(int value) {
         BigInteger result = BigInteger.ONE;
-        for (int i = 2; i <= value; i++) {
-            BigInteger factor = new BigInteger(String.valueOf(i));
-            result = result.multiply(factor);
+        while (value > 1) {
+            result = result.multiply(BigInteger.valueOf(value));
+            value--;
         }
         return result;
     }
@@ -69,8 +100,8 @@ public class Main {
     // Задача 2.4.14
     // Реализуйте предыдущую задачу с использованием рекурсии.
     public static BigInteger factorial_r(int value) {
-        if (value <= 2) return BigInteger.ONE;
-        return new BigInteger(String.valueOf(value)).multiply(factorial(value - 1));
+        if (value < 2) return BigInteger.ONE;
+        return BigInteger.valueOf(value).multiply(factorial(--value));
     }
 
     //  Задача 2.4.15
@@ -137,7 +168,9 @@ public class Main {
     // Вам дан список ролей и сценарий пьесы в виде массива строчек.
     // Напишите метод, который будет группировать строчки по ролям, пронумеровывать их и возвращать результат в виде готового текста
     public static String printTextPerRole(String[] roles, String[] textLines) {
+
         StringBuilder res = new StringBuilder();
+
         for (String role : roles) {
             res.append(role).append(":\n");
             for (int i = 0; i < textLines.length; i++) {
@@ -147,8 +180,9 @@ public class Main {
             }
             res.append('\n');
         }
-        return String.valueOf(res);
+        return res.toString();
     }
+
     public static void pieceTest() {
 
         String[] roles = new String[]{

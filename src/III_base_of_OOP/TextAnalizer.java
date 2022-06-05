@@ -11,8 +11,6 @@ class Main {
 
 
 
-
-
 public Label checkLabels(TextAnalyzer[] analyzers, String text) {
     for (TextAnalyzer ta: analyzers) {
         if (ta.processText(text) != Label.OK) {
@@ -22,7 +20,7 @@ public Label checkLabels(TextAnalyzer[] analyzers, String text) {
     return Label.OK;
 }
 
-public abstract class KeywordAnalyzer implements TextAnalyzer {
+public abstract static class KeywordAnalyzer implements TextAnalyzer {
 
     @Override
     public Label processText(String text) {
@@ -39,7 +37,9 @@ public abstract class KeywordAnalyzer implements TextAnalyzer {
     protected abstract Label getLabel();
 }
 
-public class SpamAnalyzer extends KeywordAnalyzer {
+
+
+public static class SpamAnalyzer extends KeywordAnalyzer {
 
     private final String[] keywords;
 
@@ -58,7 +58,9 @@ public class SpamAnalyzer extends KeywordAnalyzer {
     }
 }
 
-public class NegativeTextAnalyzer extends KeywordAnalyzer {
+
+
+public static class NegativeTextAnalyzer extends KeywordAnalyzer {
 
     @Override
     protected String[] getKeywords() {
@@ -71,7 +73,10 @@ public class NegativeTextAnalyzer extends KeywordAnalyzer {
     }
 }
 
-public class TooLongTextAnalyzer implements TextAnalyzer {
+
+
+
+public static class TooLongTextAnalyzer implements TextAnalyzer {
 
     private final int maxLength;
 
@@ -81,10 +86,8 @@ public class TooLongTextAnalyzer implements TextAnalyzer {
 
     @Override
     public Label processText(String text) {
-        if (text.length() > maxLength) {
-            return Label.TOO_LONG;
-        }
-        return Label.OK;
+
+        return (text.length() > maxLength) ? Label.TOO_LONG : Label.OK;
     }
 }
 

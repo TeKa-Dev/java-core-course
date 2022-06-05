@@ -46,7 +46,8 @@ public class ComplexNumber {
     @Override
     public int hashCode() {
 
-        return 31 * Double.hashCode(im) + Double.hashCode(re);
+        return (int)( 31 * im + re);
     }
 
 }
+// (int)(bits ^ (bits >>> 32));

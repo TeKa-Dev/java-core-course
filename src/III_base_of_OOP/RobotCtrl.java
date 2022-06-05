@@ -27,25 +27,25 @@ public static void moveRobot(Robot robot, int toX, int toY) {
     Direction dirX = robot.getX() > toX ? Direction.LEFT : Direction.RIGHT;  // направление цели относительно робота по X
     Direction dirY = robot.getY() > toY ? Direction.DOWN : Direction.UP;     // направление цели относительно робота по Y
 
-        while (robot.getDirection() != dirX) {    // крутимся пока не повернемся в сторону цели по X
-            robot.turnLeft();
-        }
-        while (robot.getX() != toX) {       // идем пока координаты не станут одинаковые
-            robot.stepForward();
-        }
-        while (robot.getDirection() != dirY) {    // повторяем тоже самое по Y
-            robot.turnLeft();
-        }
-        while (robot.getY() != toY) {
-            robot.stepForward();
-        }
+//        while (robot.getDirection() != dirX) {    // крутимся пока не повернемся в сторону цели по X
+//            robot.turnLeft();
+//        }
+//        while (robot.getX() != toX) {       // идем пока координаты не станут одинаковые
+//            robot.stepForward();
+//        }
+//        while (robot.getDirection() != dirY) {    // повторяем тоже самое по Y
+//            robot.turnLeft();
+//        }
+//        while (robot.getY() != toY) {
+//            robot.stepForward();
+//        }
 
     //  почему-то не работает если вынести циклы во внешние методы
-//    turnTo(robot, dirX);
-//    goTo(robot, toX);
-//
-//    turnTo(robot, dirY);
-//    goTo(robot, toY);
+    turnTo(robot, dirX);
+    goTo(robot, toX);
+
+    turnTo(robot, dirY);
+    goTo(robot, toY);
 }
 
 private static void turnTo(Robot robot, Direction dirGoal) {

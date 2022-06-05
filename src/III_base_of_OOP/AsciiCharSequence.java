@@ -2,6 +2,8 @@ package III_base_of_OOP;
 
 // Задача 3.5.6
 
+import java.util.Arrays;
+
 /*
 Напишите статический класс AsciiCharSequence, реализующий компактное хранение последовательности
 ASCII-символов (их коды влезают в один байт) в массиве байт.
@@ -23,15 +25,7 @@ public class AsciiCharSequence implements CharSequence {
     }
 
     public CharSequence subSequence(int start, int end) {
-
-        byte[] res = new byte[end - start];     // создаем новый массив байтов в него будем собирать рузультат
-                                                // его длина равняется разнице между индексами начала и конца
-        for (int i = 0; i < res.length; i++) {  // проходим по этому массиву
-
-            res[i] = bytes[start];              // ложим в нее байты из объекта, начиная с индекса start
-            start++;
-        }
-        return new AsciiCharSequence(res);
+        return new AsciiCharSequence(Arrays.copyOfRange(bytes, start, end));
     }
 
     public String toString() {

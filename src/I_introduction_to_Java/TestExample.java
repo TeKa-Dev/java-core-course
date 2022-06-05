@@ -16,9 +16,17 @@ public class TestExample {
         TestInterface ti = () -> TestInterface.B;
 //        System.out.println(I_introduction_to_Java.TestInterface.someInt(ti));
 
-        TestAbstract ta = new TestAbstract() {
+        System.out.println(TestInterface.stcInt(ti));
+
+
+        TestAbstract ta = new TestAbstract((byte) 5) {
             @Override
             byte absByte() {
+                return 0;
+            }
+
+            @Override
+            byte abtByte() {
                 return 0;
             }
         };
@@ -28,7 +36,7 @@ public class TestExample {
         Field field = TestReflection.class.getDeclaredField("prvInt");
         field.setAccessible(true);
 
-        System.out.println(field.get(new TestReflection()));
+//        System.out.println(field.get(new TestReflection()));
 
     }
 
