@@ -20,9 +20,9 @@ public class Main {
         double res = 0d;
 
         while (scn.hasNext()) {
-            try {
+            if (scn.hasNextDouble()) {
                 res += scn.nextDouble();
-            } catch (Exception e) {
+            } else  {
                 scn.next();
             }
         }

@@ -20,7 +20,16 @@ package module_6_collections.lesson_6_1_10_11;
 class Box<T> {
     private T object;
 
-    public static <T> Box<T> getBox() {
-        return new  Box<T>();
+    public T getObject() {
+        return object;
+    }
+
+    Box<T> getBox() {
+        return new Box<>();
+    }
+
+    static <T> Box<T> getTBox() {
+        return new Box<>();
     }
 }
+

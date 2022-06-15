@@ -9,10 +9,8 @@ public class ISAdder {
 //        System.out.println(sumOfStream(in));
 
         InputStream stream = new ByteArrayInputStream(new byte[]{5, 6, -4, 68});
-
         System.out.print(sumOfStream(stream));
     }
-
 
 //static public int sumOfStream(InputStream in) throws IOException {
 //    int res = 0;

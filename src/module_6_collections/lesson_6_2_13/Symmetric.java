@@ -10,6 +10,7 @@ import java.util.Set;
 
 Пример ввода: [1, 2, 3} и {0, 1, 2]
 Пример вывода: [0, 3]
+
  */
 public class Symmetric {
     public static void main(String[] args) {

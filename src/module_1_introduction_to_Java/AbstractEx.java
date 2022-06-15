@@ -1,6 +1,6 @@
 package module_1_introduction_to_Java;
 
-public abstract class TestAbstract {
+public abstract class AbstractEx {
 
     byte b;
     private byte pb;
@@ -8,7 +8,7 @@ public abstract class TestAbstract {
     static byte sb;
     final byte fb = b;
 
-    TestAbstract (byte b) {
+    AbstractEx(byte b) {
         this.b = b;
     }
 

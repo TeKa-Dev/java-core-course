@@ -1,5 +1,9 @@
 package module_6_collections.lesson_6_1_13;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /*
 Массивы в Java имеют фиксированную длину. Попробуем обойти это ограничение. Создайте класс DynamicArray, который хранит
 в себе массив, и имеет методы для добавления void add(T el), void remove(int index) удаления и извлечения T get(int index)
@@ -19,62 +23,51 @@ public class DynamicArray<T> {
         for (int i = 0; i <= 10; i++) {
             da.add(i);
         }
+        System.out.println(da);
         da.remove(10);
-        System.out.println(da.get(10));
+        da.remove(0);
+//        System.out.println(da.get(10));
 
         System.out.println(da);
     }
 
-    private Object[] elements;
-    private static final int DEFAULT = 10;
+    private T[] elements = (T[])new Object[10];
     private int size = -1;
-
-    public DynamicArray() {
-        this(DEFAULT);
-    }
-
-    public DynamicArray(int capacity) {
-        elements = new Object[capacity];
-    }
 
     public void add(T el) {
         int len = elements.length;
-        if ((size + 1) == len) {                        // условие для замены массива на больший
-            Object[] change = new Object[len + DEFAULT];
+        if ((size + 1) == len) {
+            Object[] change = new Object[len * 10];
             System.arraycopy(elements, 0, change, 0, len);
-            elements = change;
+            elements = (T[]) change;
         }
         elements[++size] = el;
     }
 
     public void remove(int index) {
-        if (index > size) {
-            throw new ArrayIndexOutOfBoundsException();
-        }
-        while (index < size) {                    // цикл чтобы здвигать все элементы влево заполняя удаленное место
-            elements[index] = elements[++index];
-        }
-        if (index == size) {                      // если удаляем последний элемент, то просто обнуляем его
-            elements[index] = null;
-            size--;
-        }
+        System.arraycopy(elements, index + 1, elements, index, size - index);
+        size--;
     }
 
     public T get(int index) {
         if (index > size) {
             throw new ArrayIndexOutOfBoundsException();
         }
-        return (T) elements[index];
+        return elements[index];
     }
 
     @Override
     public String toString() {
-        if (size == -1) { return "[]"; }
+        if (size == -1) {
+            return "[]";
+        }
         StringBuilder res = new StringBuilder();
         res.append('[');
         for (int i = 0; ; i++) {
             res.append(String.valueOf(elements[i]));
-            if (i == size) { return res.append(']').toString(); }
+            if (i == size) {
+                return res.append(']').toString();
+            }
             res.append(',');
         }
     }

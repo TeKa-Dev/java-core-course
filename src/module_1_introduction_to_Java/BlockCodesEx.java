@@ -3,7 +3,7 @@ package module_1_introduction_to_Java;
 Тестирование вызовов блоков в классах родителя и наследника
  */
 
-public class TestBlocks {
+public class BlockCodesEx {
     public static void main(String[] args) {
 
         Child ch = new Child();

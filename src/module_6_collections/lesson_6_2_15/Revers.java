@@ -7,48 +7,21 @@ package module_6_collections.lesson_6_2_15;
 Пример ввода: 1 2 3 4 5 6 7 8 9 10
 Пример вывода: 10 8 6 4 2
  */
-
-import java.io.IOException;
 import java.util.*;
 
 public class Revers {
+
 public static void main(String[] args) {
     Scanner scn = new Scanner(System.in);
-    Deque<String> buffer = new LinkedList<>();
+    Deque<String> buffer = new ArrayDeque<>();
 
     while (scn.hasNext()) {
         scn.next();
-        if (scn.hasNext())
-        buffer.addFirst(scn.next());
+        if (scn.hasNext()) {
+            buffer.addFirst(scn.next() + ' ');
+        }
     }
-    System.out.print(String.join(" ", buffer));
+    buffer.forEach(System.out::print);
 }
-
-//    public static void main (String[]args) throws IOException {
-//
-//        Set<Integer> set = new LinkedHashSet<>();
-//        Scanner scanner = new Scanner(System.in);
-//
-//        scanner.forEachRemaining(s -> set.add(new Integer(s)));
-//        Iterator<Integer> iterator = set.iterator();
-//        boolean evenNumber = true;
-//        while (iterator.hasNext()) {
-//            iterator.next();
-//            if (evenNumber) {
-//                iterator.remove();
-//            }
-//            evenNumber = !evenNumber;
-//        }
-//        Integer[] integers = new Integer[set.size()];
-//        set.toArray(integers);
-//
-//        for (int i = integers.length - 1; i > -1; i--) {
-//            System.out.print(integers[i]);
-//            if (i > 0) {
-//                System.out.print(" ");
-//            }
-//        }
-//    }
-
 
 }

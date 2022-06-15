@@ -26,13 +26,13 @@ public class InStreamToString {
 public static String readAsString(InputStream in, Charset charset) throws IOException {
 
     Reader r = new InputStreamReader(in, charset);
-    Writer w = new StringWriter();
-    int b;
+    Appendable res = new StringBuilder();
 
-    while ((b = r.read()) != -1) {
-        w.append((char) b);
-    }
-    return w.toString();
+    for (int b; (b = r.read()) != -1; res.append((char) b)) {}
+
+    return res.toString();
+
+//    короткое решение
 //   return new String(is.readAllBytes(), utf);
 }
 

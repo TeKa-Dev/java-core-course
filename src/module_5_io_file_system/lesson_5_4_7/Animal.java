@@ -71,18 +71,17 @@ class Test {
         System.out.println(Arrays.toString(animalsOut));
     }
 
-public static Animal[] deserializeAnimalArray(byte[] data) throws IllegalArgumentException {
-    try {
-        ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(data));
-        Animal[] animals = new Animal[ois.readInt()];
+public static Animal[] deserializeAnimalArray(byte[] data) {
+    Animal[] animals;
+    try (ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(data))) {
+        animals = new Animal[ois.readInt()];
         for (int i = 0; i < animals.length; i++) {
             animals[i] = (Animal) ois.readObject();
         }
-        return animals;
-
-    } catch (Exception e) {
+    } catch (RuntimeException | IOException | ClassNotFoundException e) {
         throw new IllegalArgumentException(e);
     }
+    return animals;
 }
 }
 

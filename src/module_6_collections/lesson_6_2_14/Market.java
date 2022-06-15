@@ -41,20 +41,15 @@ public class Market {
         System.out.println(getSalesMap(reader));
     }
 
-public static Map<String, Long> getSalesMap(Reader reader) {
-    Map<String, Long> salesMap = new LinkedHashMap<>();
-    Scanner scn = new Scanner(reader);
-    while (scn.hasNext()) {
-        String name = scn.next();
-        if (salesMap.containsKey(name)) {
-            Long gain = salesMap.get(name) + scn.nextLong();
-            salesMap.replace(name, gain);
-        } else {
-            salesMap.put(name, scn.nextLong());
-        }
-    }
-    scn.close();
-    return salesMap;
-}
+    public static Map<String, Long> getSalesMap(Reader reader) {
 
+        Map<String, Long> salesMap = new LinkedHashMap<>();
+        Scanner scn = new Scanner(reader);
+
+        while (scn.hasNext()) {
+
+            salesMap.merge(scn.next(), scn.nextLong(), Long::sum);
+        }
+        return salesMap;
+    }
 }
