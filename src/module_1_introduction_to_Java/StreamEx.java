@@ -16,6 +16,7 @@ import java.util.stream.Stream;
 public class StreamEx {
     public static void main(String[] args) throws IOException {
 
+        int i = LambdaEx.FunInt.i;
 
         Collection<Integer> col = new ArrayDeque<>();
         col.add(1);

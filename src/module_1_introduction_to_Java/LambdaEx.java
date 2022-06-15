@@ -7,8 +7,22 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class LambdaEx {
+    static int n = 5;
 
     public static void main(String[] args) {
+
+        int[] arr = {FunInt.i};
+
+//        AbsClass ac = i -> i;
+
+        FunInt fi = i -> n = n + 1;
+        FunInt fa = i -> arr[0] = arr[0] + 1;
+
+        System.out.println(fi.method(8));
+        System.out.println(fa.method(8));
+        System.out.println(arr[0]);
+        System.out.println(n);
+
         StreamEx se = new StreamEx() {   };
         Comparable as;
         Comparator ct;
@@ -16,13 +30,13 @@ public class LambdaEx {
 
 //        String str = new String(){};
 
-        FunInt f = o -> o.length + FunInt.i;
-        met(f);
+//        FunInt f = o -> o.length + FunInt.i;
+//        met(f);
 
     }
 
     static void met(FunInt f) {
-        System.out.println(f.method(new Object[]{}));
+        System.out.println(f.method(7));
     }
 
 
@@ -38,8 +52,17 @@ public class LambdaEx {
         print.accept(String.valueOf(isNat.test(12)));
     }
 
+    public interface FunInt {
+        public static int i = 10;
+        abstract int method(int i);
+    }
 }
-interface FunInt {
-    public static int i = 10;
-    abstract int method(Object[] o);
+
+abstract class AbsClass {
+    abstract int absMet(int i);
 }
+//@FunctionalInterface
+//interface FunInt {
+//    public static int i = 10;
+//    abstract int method(int i);
+//}
